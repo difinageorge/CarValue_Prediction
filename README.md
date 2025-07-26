@@ -75,7 +75,10 @@ The dataset contains various attributes of used cars:
 - User selects car details from dropdowns  
 - Submits kilometers driven and other inputs  
 - Receives **instant price prediction**  
-- Simple and intuitive UI built with Jinja2 templating  
+- Simple and intuitive UI built with Jinja2 templating
+
+  ![Car App Screenshot](CarPricePredictor.png)
+
 
 ---
 
