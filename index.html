@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Price Predictor</title>
+
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- Google Fonts for better typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="card">
+      <!-- App Title -->
+      <h1>🚗 Car Price Predictor</h1>
+
+      <!-- Form for user input -->
+      <form method="POST">
+        <!-- Company dropdown -->
+        <div class="form-group">
+          <label for="company">Select Company</label>
+          <select name="company" id="company" required>
+            {% for item in companies %}
+              <option value="{{ item }}">{{ item }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Car Model dropdown -->
+        <div class="form-group">
+          <label for="car_model">Select Car Model</label>
+          <select name="car_model" id="car_model" required>
+            {% for item in car_models %}
+              <option value="{{ item }}">{{ item }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Fuel Type dropdown -->
+        <div class="form-group">
+          <label for="fuel">Select Fuel Type</label>
+          <select name="fuel" id="fuel" required>
+            {% for item in fuel_types %}
+              <option value="{{ item }}">{{ item }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Year input -->
+        <div class="form-group">
+          <label for="year">Year of Purchase</label>
+          <input type="number" name="year" id="year" min="1990" max="2025" required>
+        </div>
+
+        <!-- Kilometers Driven input -->
+        <div class="form-group">
+          <label for="kms_driven">Kilometers Driven</label>
+          <input type="number" name="kms_driven" id="kms_driven" required>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit">Predict Price</button>
+      </form>
+
+      <!-- Prediction result display -->
+      {% if prediction %}
+        <div class="result">
+          <h2>💰 Estimated Price: ₹ {{ prediction }}</h2>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
